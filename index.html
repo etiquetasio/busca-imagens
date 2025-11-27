@@ -2,11 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>Busca Imagem de Produtos</title>
+  <title>etiquetas.io Dashboard de busca Imagem de Produtos</title>
   <style>
     body { font-family: Arial; padding: 20px; background: #f5f5f5; }
 
-    /* LOGO */
     #logo {
       width: 180px;
       margin-bottom: 20px;
@@ -19,6 +18,22 @@
     .item { background: white; padding: 10px; border-radius: 8px; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .item img { width: 100%; border-radius: 6px; }
     .err { color: red; margin-top: 10px; }
+
+    /* BOTÃO DOWNLOAD */
+    .download-btn {
+      margin-top: 10px;
+      display: inline-block;
+      padding: 8px 12px;
+      background: #28a745;
+      color: white;
+      font-size: 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+    }
+    .download-btn:hover {
+      background: #1e7e34;
+    }
 
     /* AMPULHETA */
     #loading {
@@ -44,8 +59,7 @@
 </head>
 <body>
 
-  <!-- Logotipo -->
-  <img id="logo" src="https://saportalcorporativoprd.blob.core.windows.net/blobappportalc63534e8570/wp-content/uploads/2024/01/cropped-favicon.jpg" alt="Logo">
+  <img id="logo" src="https://etiquetas.io/wp-content/uploads/2023/05/logo-etiquetas-io.png" alt="Logo">
 
   <h1>Busca Imagens de Produtos</h1>
 
@@ -54,7 +68,6 @@
 
   <div id="msg" class="err"></div>
 
-  <!-- AMPULHETA ANIMADA -->
   <div id="loading">
     <span class="hourglass">⌛</span>
     Buscando imagens, aguarde...
@@ -77,7 +90,6 @@
         return;
       }
 
-      // Mostrar ampulheta
       loading.style.display = "block";
 
       try {
@@ -112,6 +124,10 @@
             <img src="${item.url}" alt="">
             <h3>Rank: ${item.rank}</h3>
             <p>${item.title || ""}</p>
+
+            <a class="download-btn" href="${item.url}" download="imagem_rank_${item.rank}.jpg">
+              Baixar Imagem
+            </a>
           `;
 
           results.appendChild(div);
@@ -122,7 +138,6 @@
         console.error(err);
       }
 
-      // Esconde ampulheta
       loading.style.display = "none";
     }
   </script>
