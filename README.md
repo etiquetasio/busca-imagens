@@ -1,1 +1,1 @@
-index.html para busca de imagens
+index.html para busca de imagens com OpenSerp server
